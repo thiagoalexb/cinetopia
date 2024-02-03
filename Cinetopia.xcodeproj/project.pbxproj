@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112E08732B6E11F50028CA59 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112E08722B6E11F50028CA59 /* MovieService.swift */; };
 		11AF22992B6B46430013D886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AF22982B6B46430013D886 /* AppDelegate.swift */; };
 		11AF229B2B6B46430013D886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AF229A2B6B46430013D886 /* SceneDelegate.swift */; };
 		11AF229D2B6B46430013D886 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AF229C2B6B46430013D886 /* HomeViewController.swift */; };
@@ -16,9 +17,11 @@
 		11BB39F92B6CC2140098A98C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BB39F82B6CC2140098A98C /* Movie.swift */; };
 		11BB39FC2B6CC4D30098A98C /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BB39FB2B6CC4D30098A98C /* MovieTableViewCell.swift */; };
 		11BB39FE2B6CCE1F0098A98C /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BB39FD2B6CCE1F0098A98C /* MovieDetailViewController.swift */; };
+		8DCAA0FCEBFD1D4BADAC9083 /* Pods_Cinetopia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 848516F44A532B6012A0879E /* Pods_Cinetopia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		112E08722B6E11F50028CA59 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		11AF22952B6B46430013D886 /* Cinetopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cinetopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11AF22982B6B46430013D886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11AF229A2B6B46430013D886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +33,9 @@
 		11BB39F82B6CC2140098A98C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		11BB39FB2B6CC4D30098A98C /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		11BB39FD2B6CCE1F0098A98C /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		848516F44A532B6012A0879E /* Pods_Cinetopia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cinetopia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		863EA53A040566AEEF782A3C /* Pods-Cinetopia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cinetopia.release.xcconfig"; path = "Target Support Files/Pods-Cinetopia/Pods-Cinetopia.release.xcconfig"; sourceTree = "<group>"; };
+		ECE5F01A696BB1EC94209196 /* Pods-Cinetopia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cinetopia.debug.xcconfig"; path = "Target Support Files/Pods-Cinetopia/Pods-Cinetopia.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DCAA0FCEBFD1D4BADAC9083 /* Pods_Cinetopia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		112E08712B6E11E50028CA59 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				112E08722B6E11F50028CA59 /* MovieService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		11AF228C2B6B46430013D886 = {
 			isa = PBXGroup;
 			children = (
 				11AF22972B6B46430013D886 /* Cinetopia */,
 				11AF22962B6B46430013D886 /* Products */,
+				2F1E91DAEAC27B3BB292CD3E /* Pods */,
+				DF22562111C3A109D8A193F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +79,7 @@
 		11AF22972B6B46430013D886 /* Cinetopia */ = {
 			isa = PBXGroup;
 			children = (
+				112E08712B6E11E50028CA59 /* Services */,
 				11BB39FA2B6CC4BB0098A98C /* Cells */,
 				11BB39F72B6CC2030098A98C /* Models */,
 				11BB39F62B6CC1F20098A98C /* ViewControllers */,
@@ -100,6 +118,24 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		2F1E91DAEAC27B3BB292CD3E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ECE5F01A696BB1EC94209196 /* Pods-Cinetopia.debug.xcconfig */,
+				863EA53A040566AEEF782A3C /* Pods-Cinetopia.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DF22562111C3A109D8A193F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				848516F44A532B6012A0879E /* Pods_Cinetopia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11AF22A92B6B46440013D886 /* Build configuration list for PBXNativeTarget "Cinetopia" */;
 			buildPhases = (
+				7EBAC20A548EC578FCCFB5FC /* [CP] Check Pods Manifest.lock */,
 				11AF22912B6B46430013D886 /* Sources */,
 				11AF22922B6B46430013D886 /* Frameworks */,
 				11AF22932B6B46430013D886 /* Resources */,
+				5F815A4C7FDB073B1B3348DE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +203,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5F815A4C7FDB073B1B3348DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cinetopia/Pods-Cinetopia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cinetopia/Pods-Cinetopia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cinetopia/Pods-Cinetopia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EBAC20A548EC578FCCFB5FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cinetopia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		11AF22912B6B46430013D886 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -176,6 +256,7 @@
 				11AF229B2B6B46430013D886 /* SceneDelegate.swift in Sources */,
 				11BB39FE2B6CCE1F0098A98C /* MovieDetailViewController.swift in Sources */,
 				11BB39F52B6CA5C20098A98C /* MoviesViewController.swift in Sources */,
+				112E08732B6E11F50028CA59 /* MovieService.swift in Sources */,
 				11BB39F92B6CC2140098A98C /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +391,7 @@
 		};
 		11AF22AA2B6B46440013D886 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECE5F01A696BB1EC94209196 /* Pods-Cinetopia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -336,6 +418,7 @@
 		};
 		11AF22AB2B6B46440013D886 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 863EA53A040566AEEF782A3C /* Pods-Cinetopia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

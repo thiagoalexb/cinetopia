@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieDetailViewController: UIViewController {
     
@@ -82,7 +83,8 @@ extension MovieDetailViewController {
     
     private func setupDetails() {
         movieTitleLabel.text = movie.title
-        movieImageView.image = UIImage(named: movie.image)
+        let url = URL(string: movie.image)
+        movieImageView.kf.setImage(with: url)
         rateLabel.text = "Classificação dos usuários: \(movie.rate)"
         synopsisLabel.text = movie.synopsis
     }

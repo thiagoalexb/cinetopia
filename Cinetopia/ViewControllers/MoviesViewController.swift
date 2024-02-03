@@ -9,8 +9,10 @@ import UIKit
 
 class MoviesViewController: UIViewController {
     
-    private var filteredMovies: [Movie] = movies
+    private var movies: [Movie] = []
+    private var filteredMovies: [Movie] = []
     private var isSearchActive: Bool = false
+    private let movieService: MovieService = MovieService()
     
     private lazy var tableView: UITableView = {
        let tableView = UITableView()
@@ -37,6 +39,9 @@ class MoviesViewController: UIViewController {
         setupNavigationBar()
         addSubViews()
         setupConstraints()
+        Task {
+            await getMovies()
+        }
     }
     
 }
@@ -65,6 +70,16 @@ extension MoviesViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+    
+    private func getMovies() async {
+        do {
+            movies = try await movieService.getMovies()
+            filteredMovies = movies
+            tableView.reloadData()
+        }catch(let error ) {
+            print(error)
+        }
     }
 }
 
