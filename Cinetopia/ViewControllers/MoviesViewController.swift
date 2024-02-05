@@ -44,6 +44,11 @@ class MoviesViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
 }
 
 extension MoviesViewController {
@@ -51,8 +56,10 @@ extension MoviesViewController {
     private func setupNavigationBar() {
         title = "Flmes populares"
         navigationController?.navigationBar.prefersLargeTitles = true
+        let font = UIFont.systemFont(ofSize: 24)
         navigationController?.navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: font
         ]
         navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.titleView = searchBar
@@ -84,6 +91,8 @@ extension MoviesViewController {
 }
 
 extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         filteredMovies.count
     }
@@ -92,6 +101,7 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as? MovieTableViewCell {
             cell.configureCell(movie: filteredMovies[indexPath.row])
             cell.selectionStyle = .none
+            cell.delegate = self
             return cell
         }
         
@@ -107,7 +117,6 @@ extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160 
     }
-    
 }
 
 extension MoviesViewController: UISearchBarDelegate {
@@ -123,5 +132,24 @@ extension MoviesViewController: UISearchBarDelegate {
         }
         
         tableView.reloadData()
+    }
+}
+
+extension MoviesViewController: MovieTableViewCellDelegate {
+    func didFavoriteMovie(id: Int) {
+        if let index = movies.firstIndex(where: { movies in
+            movies.id == id
+        }) {
+            let movie = movies[index]
+            if(movie.isFavorite ?? false) {
+                MovieManager.shared.removeFavorite(id: movie.id)
+            } else {
+                MovieManager.shared.addFavorite(movie: movie)
+            }
+            
+            movie.changeFavoriteStatus()
+            
+            tableView.reloadData()
+        }
     }
 }

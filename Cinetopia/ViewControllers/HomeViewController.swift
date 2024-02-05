@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     
     @objc private func buttonPressed() {
-        navigationController?.pushViewController(MoviesViewController(), animated: true)
+        navigationController?.pushViewController(TabBarController(), animated: true)
     }
     
     private func addSubViews() {

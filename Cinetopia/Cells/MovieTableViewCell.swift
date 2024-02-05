@@ -8,7 +8,13 @@
 import UIKit
 import Kingfisher
 
+protocol MovieTableViewCellDelegate: AnyObject {
+    func didFavoriteMovie(id: Int)
+}
+
 class MovieTableViewCell: UITableViewCell {
+    
+    weak var delegate: MovieTableViewCellDelegate?
     
     private lazy var movieImageView: UIImageView = {
         let imageView = UIImageView()
@@ -36,6 +42,15 @@ class MovieTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var favoriteButton: UIButton = {
+       let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let iconImage = UIImage(systemName: "heart")?.withTintColor(UIColor(named: "ButtonBackgroundColor") ?? .blue, renderingMode: .alwaysOriginal)
+        button.setImage(iconImage, for: .normal)
+        button.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
+        return button
+    }()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,12 +68,19 @@ class MovieTableViewCell: UITableViewCell {
         let url = URL(string: movie.image)
         movieImageView.kf.setImage(with: url)
         movieReleaseLabel.text = "Lançamento \(movie.releaseDate)"
+        
+        let favoriteIconString = movie.isFavorite ?? false ? "heart.fill" : "heart"
+        
+        let iconImage = UIImage(systemName: favoriteIconString)?.withTintColor(UIColor(named: "ButtonBackgroundColor") ?? .blue, renderingMode: .alwaysOriginal)
+        favoriteButton.setImage(iconImage, for: .normal)
+        favoriteButton.tag = movie.id
     }
     
     private func addSubViews() {
         addSubview(movieImageView)
         addSubview(movieTitleLabel)
         addSubview(movieReleaseLabel)
+        contentView.addSubview(favoriteButton)
     }
     
     private func setupConstraints() {
@@ -73,20 +95,27 @@ class MovieTableViewCell: UITableViewCell {
             movieTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
             movieReleaseLabel.topAnchor.constraint(equalTo: movieTitleLabel.bottomAnchor, constant: 8),
-            movieReleaseLabel.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 16)
+            movieReleaseLabel.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 16),
+            
+            favoriteButton.topAnchor.constraint(equalTo: movieReleaseLabel.bottomAnchor, constant: 8),
+            favoriteButton.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 16),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 25),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 25)
             
         ])
+    }
+    
+    @objc
+    private func didTapFavoriteButton(sender: UIButton) {
+        delegate?.didFavoriteMovie(id: sender.tag)
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
